@@ -37,7 +37,7 @@ function Board(props) {
             [classes.red]: n.minus,
           })}
         >
-          {n.sum}
+          {n.number === 0 ? 'x' : n.sum}
         </Typography>
       ))}
     </div>
