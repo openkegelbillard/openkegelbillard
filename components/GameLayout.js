@@ -1,6 +1,7 @@
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import classNames from 'classnames'
 import React from 'react'
+import useGame from '../game'
 
 import Board from './gameLayout/Board'
 import Footer from './gameLayout/Footer'
@@ -51,22 +52,23 @@ function GameLayout(props) {
   const { className: classNameProp } = props
 
   const classes = useStyles()
+  const game = useGame()
 
   return (
     <div className={classNames(classes.root, classNameProp)}>
       <Header className={classes.header} />
-      <Number number={75} label="Stoß-Anzahl" large />
-      <Number number={112} label="Punktestand" large />
-      <Board className={classes.board} numbers={[1, 2, 3]} />
+      <Number number={game.count} label="Stoß-Anzahl" large />
+      <Number number={game.sum} label="Punktestand" large />
+      <Board className={classes.board} numbers={game.numbers} />
       <div className={classes.stats}>
         <div className={classes.row}>
           <Number number={206} label="Prognose" />
           <Number number={82} label="Halbzeit" />
         </div>
 
-        <Number number={6} label="Aktueller Stoß" large />
+        <Number number={game.currentNumber} label="Aktueller Stoß" large />
         <Number number={12} label="Minus" />
-        <Number number={1} label="Spieldauer" />
+        <Number number={game.time} label="Spieldauer" />
       </div>
       <Footer className={classes.footer} />
     </div>
