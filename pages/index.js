@@ -1,4 +1,5 @@
 import React from 'react'
+import { Typography } from '@material-ui/core'
 
 /**
  * Start Page
@@ -7,7 +8,7 @@ import React from 'react'
  * @constructor
  */
 function Index() {
-  return <div>Open Kegelbillard</div>
+  return <Typography>Open Kegelbillard</Typography>
 }
 
 export default Index
