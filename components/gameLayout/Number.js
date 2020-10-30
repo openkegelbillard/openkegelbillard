@@ -54,7 +54,9 @@ function Number(props) {
       )}
     >
       <div className={classes.numberContainer}>
-        <Typography className={classes.number}>{number}</Typography>
+        <Typography className={classes.number}>
+          {number !== undefined ? number : '\0'}
+        </Typography>
       </div>
       <Typography className={classes.label}>{label}</Typography>
     </div>

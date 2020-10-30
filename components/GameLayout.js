@@ -62,8 +62,8 @@ function GameLayout(props) {
       <Board className={classes.board} numbers={game.numbers} />
       <div className={classes.stats}>
         <div className={classes.row}>
-          <Number number={206} label="Prognose" />
-          <Number number={82} label="Halbzeit" />
+          <Number number={game.prognose100} label="Prognose" />
+          <Number number={game.halfTime} label="Halbzeit" />
         </div>
 
         <Number

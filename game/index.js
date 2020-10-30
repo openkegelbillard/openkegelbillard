@@ -52,9 +52,12 @@ function useGame() {
             number = -number
           }
 
+          const sum = current.sum + number
+          const count = current.count + 1
+
           return {
             ...current,
-            count: current.count + 1,
+            count,
             currentNumber: number,
             numbers: [
               ...current.numbers,
@@ -64,9 +67,11 @@ function useGame() {
                 minus: current.minusOpt,
               },
             ],
-            sum: current.sum + number,
+            sum,
             minus: current.minusOpt ? current.minus - number : current.minus,
             minusOpt: false,
+            halfTime: current.numbers[50]?.sum,
+            prognose100: Math.round((sum / count) * 100),
           }
         })
       }
