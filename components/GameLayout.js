@@ -66,8 +66,13 @@ function GameLayout(props) {
           <Number number={82} label="Halbzeit" />
         </div>
 
-        <Number number={game.currentNumber} label="Aktueller Stoß" large />
-        <Number number={12} label="Minus" />
+        <Number
+          number={game.minusOpt ? '-' : game.currentNumber}
+          label="Aktueller Stoß"
+          large
+          red={game.minusOpt || game.currentNumber < 0}
+        />
+        <Number number={game.minus} red label="Minus" />
         <Number number={game.time} label="Spieldauer" />
       </div>
       <Footer className={classes.footer} />

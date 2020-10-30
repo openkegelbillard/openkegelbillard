@@ -33,6 +33,9 @@ function useGame() {
     numbers: [],
     sum: 0,
     startTime: new Date(),
+    minus: 0,
+
+    minusOpt: false,
   })
 
   useEffect(() => {
@@ -42,13 +45,36 @@ function useGame() {
 
     function onKeyPress(e) {
       if (/[0-7]/.exec(e.key)) {
-        const number = parseInt(e.key)
+        let number = parseInt(e.key)
+
+        setGame((current) => {
+          if (current.minusOpt) {
+            number = -number
+          }
+
+          return {
+            ...current,
+            count: current.count + 1,
+            currentNumber: number,
+            numbers: [
+              ...current.numbers,
+              {
+                number,
+                sum: current.sum + number,
+                minus: current.minusOpt,
+              },
+            ],
+            sum: current.sum + number,
+            minus: current.minusOpt ? current.minus - number : current.minus,
+            minusOpt: false,
+          }
+        })
+      }
+
+      if (e.key === '-') {
         setGame((current) => ({
           ...current,
-          count: current.count + 1,
-          currentNumber: number,
-          numbers: [...current.numbers, current.sum + number],
-          sum: current.sum + number,
+          minusOpt: true,
         }))
       }
     }

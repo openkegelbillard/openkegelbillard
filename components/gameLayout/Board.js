@@ -17,6 +17,9 @@ const useStyles = makeStyles(
     number: {
       fontSize: '1.5rem',
     },
+    red: {
+      color: 'red',
+    },
   },
   { name: 'Board' },
 )
@@ -28,7 +31,14 @@ function Board(props) {
   return (
     <div className={classNames(classes.root, classNameProp)}>
       {numbers.map((n) => (
-        <Typography className={classes.number}>{n}</Typography>
+        <Typography
+          className={classNames({
+            [classes.number]: true,
+            [classes.red]: n.minus,
+          })}
+        >
+          {n.sum}
+        </Typography>
       ))}
     </div>
   )

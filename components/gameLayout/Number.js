@@ -12,6 +12,9 @@ const useStyles = makeStyles(
     large: {
       '--number-size': '8rem',
     },
+    red: {
+      '--number-color': 'red',
+    },
     numberContainer: {
       background: 'white',
       padding: '1rem',
@@ -19,6 +22,7 @@ const useStyles = makeStyles(
     number: {
       textAlign: 'center',
       fontSize: 'var(--number-size)',
+      color: 'var(--number-color)',
       lineHeight: 1,
     },
     label: {
@@ -38,14 +42,14 @@ const useStyles = makeStyles(
  * @constructor
  */
 function Number(props) {
-  const { className: classNameProp, label, number, large } = props
+  const { className: classNameProp, label, number, large, red } = props
 
   const classes = useStyles()
 
   return (
     <div
       className={classNames(
-        { [classes.root]: true, [classes.large]: large },
+        { [classes.root]: true, [classes.large]: large, [classes.red]: red },
         classNameProp,
       )}
     >
