@@ -7,6 +7,7 @@ import Board from './gameLayout/Board'
 import Footer from './gameLayout/Footer'
 import Header from './gameLayout/Header'
 import Number from './gameLayout/Number'
+import Timer from './gameLayout/Timer'
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -73,7 +74,10 @@ function GameLayout(props) {
           red={game.minusOpt || game.currentNumber < 0}
         />
         <Number number={game.minus} red label="Minus" />
-        <Number number={game.time} label="Spieldauer" />
+        <Number
+          number={<Timer start={game.startTime} end={game.endTime} />}
+          label="Spieldauer"
+        />
       </div>
       <Footer className={classes.footer} />
     </div>
